@@ -1,3 +1,41 @@
-.background{
-    background-color: #484041;
+textarea:focus, input:focus, label:focus{
+    outline: none;
+    border-color: black;
 }
+
+.main-background{
+    background-color: #16213e;
+}
+
+.main-header{
+    background-color: #e94560;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: start;
+    
+}
+
+.main-header input{
+    flex-grow: 1;
+    margin-right: 10px;
+    margin-left: 15px;
+    border-radius: 10px;
+}
+
+.buttons{
+    margin-right: 15px;
+}
+
+.buttons label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 2px;
+    margin-top: 7px;
+    background-color: white;
+}
+
