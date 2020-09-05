@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <title>Divinity Load Order</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css"/>
   </head>
-  <body class="test">
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+  <body class="background">
+    <header class="header">
+      <input placeholder="load order file location"/>
+      <button class="fa fa-heart text-danger"> test </button>
+    </header>
   </body>
 </html>
