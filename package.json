@@ -1,36 +1,62 @@
 {
   "name": "divinity2-load-order",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc",
-    "copyStatic": "cp -r ./src/public/ ./build",
-    "copyBootstrap": "cp ./node_modules/bootstrap/dist/css/bootstrap.min.css ./build/public/css",
-    "copyFontAwesome": "cp ./node_modules/font-awesome/css/font-awesome.min.css ./build/public/css && cp -r ./node_modules/font-awesome/fonts ./build/public/fonts",
-    "copyFiles": "npm run copyStatic && npm run copyBootstrap && npm run copyFontAwesome",
-    "runElectron": "electron ./build/main.js",
-    "build": "npm run compile && npm run copyFiles",
-    "start": "npm run build && npm run runElectron"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wykke/divinity2-load-order.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wykke/divinity2-load-order/issues"
-  },
-  "homepage": "https://github.com/wykke/divinity2-load-order#readme",
-  "devDependencies": {
-    "electron": "^10.1.1"
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "./",
+  "main": "public/electron.js",
+  "build": {
+    "appId": "com.wykke.divinity2loadorder",
+    "files": [
+      "./build/**/*",
+      "./node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "public/assets",
+      "output": "bin"
+    },
+    "linux": {
+      "target": "Appimage"
+    }
   },
   "dependencies": {
-    "bootstrap": "^4.5.2",
-    "font-awesome": "^4.7.0",
-    "typescript": "^4.0.2"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "electron-is-dev": "^1.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "typescript": "~3.7.2"
+  },
+  "devDependencies": {
+    "electron": "^10.1.1",
+    "electron-builder": "^22.8.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-start": "electron ./public/electron.js",
+    "electron-build": "yarn build --em.main=build/electron.js && electron-builder"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
