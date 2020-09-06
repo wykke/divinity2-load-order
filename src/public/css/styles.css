@@ -3,6 +3,10 @@ textarea:focus, input:focus, label:focus{
     border-color: black;
 }
 
+label, li{
+    user-select: none;
+}
+
 .main-background{
     background-color: #16213e;
 }
@@ -21,6 +25,7 @@ textarea:focus, input:focus, label:focus{
     margin-right: 10px;
     margin-left: 15px;
     border-radius: 10px;
+    padding-left: 10px;
 }
 
 .buttons{
