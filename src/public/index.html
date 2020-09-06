@@ -22,17 +22,19 @@
       <div class="mods-list">
         <label>Active Mods</label>
         <ul>
-          <li>test</li>
+          <li draggable="true" ondragstart="onDragStart(event)" id="draggable-1">test</li>
           <li>test2</li>
         </ul>
       </div>
       <div class="mods-list">
         <label>Inactive Mods</label>
-        <ul>
+        <ul ondragover="onDragOver(event)" ondrop="onDrop(event)">
           <li>test</li>
           <li>test2</li>
         </ul>
       </div>
     </div>
+
+    <script src="../dragAndDrop/dragAndDrop.js"></script>
   </body>
 </html>
