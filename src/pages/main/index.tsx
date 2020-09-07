@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Header from '../../components/header'
+import MainBody from '../mainBody'
 
 import './styles.css'
 import '../../globalStyles.css'
@@ -11,6 +12,7 @@ export default function Main(){
     return (
         <div className="main">
             <Header/>
+            <MainBody/>
         </div>
     )
 }
