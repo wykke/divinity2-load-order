@@ -1,0 +1,7 @@
+.file-input{
+    flex-grow: 1;
+    margin-right: 10px;
+    margin-left: 15px;
+    border-radius: 10px;
+    padding-left: 7px;
+}

@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+::-webkit-scrollbar {     
+    background: transparent;
+    margin-left: 10px;
+    width: 3px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+    background-color: #90a4aeb9;
+    border-radius: 1px;
+}
+
+#root{
+    width: 100vw;
+    height: 100vh;
+}

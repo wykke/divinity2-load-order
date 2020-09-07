@@ -1,0 +1,34 @@
+.mod-card{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    background-color: #0f3460;
+    border: solid 3px #e94560;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 30vw;
+    height: 60px;
+    color: #f0f0f0;
+    font-family: 'Roboto';
+    padding: 5px;
+}
+
+.mod-card text{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.mod-version-author{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mod-version-author text{
+    font-size: 12px;
+    max-width: 45%;
+}
+
+.mod-title{
+    flex-grow: 1;
+}

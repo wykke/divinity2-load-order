@@ -1,4 +1,8 @@
-import { app, BrowserWindow } from 'electron'
+const {app, BrowserWindow } = require('electron')
+const path = require('path')
+const isDev = require('electron-is-dev')
+ 
+const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -9,8 +13,8 @@ function createWindow () {
     }
   })
 
-  win.loadFile('./public/index.html')
   win.setMenu(null)
+  win.loadURL(startURL)
 
   win.webContents.openDevTools()
 }
