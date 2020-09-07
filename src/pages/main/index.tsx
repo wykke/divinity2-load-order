@@ -4,7 +4,8 @@ import Header from '../../components/header'
 
 import './styles.css'
 import '../../globalStyles.css'
-import '../../assets/fonts.css'
+import '../../assets/css/fonts.css'
+import '../../assets/css/font-awesome.min.css'
 
 export default function Main(){
     return (

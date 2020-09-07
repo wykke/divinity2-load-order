@@ -34,7 +34,8 @@
   },
   "devDependencies": {
     "electron": "^10.1.1",
-    "electron-builder": "^22.8.0"
+    "electron-builder": "^22.8.0",
+    "font-awesome": "^4.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
