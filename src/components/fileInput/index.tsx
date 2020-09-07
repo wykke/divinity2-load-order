@@ -4,6 +4,6 @@ import './styles.css'
 
 export default function FileInput(){
     return (
-        <input className="file-input"></input>
+        <input className="file-input" placeholder="Mod list file path..."></input>
     )
 }
