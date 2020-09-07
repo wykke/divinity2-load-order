@@ -1,0 +1,10 @@
+.mod-list{
+    width: 30%;
+    height: 80%;
+}
+
+.mod-list > text{
+    font-family: 'Roboto';
+    font-size: 30px;
+    color: white;
+}
