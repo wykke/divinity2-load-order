@@ -19,12 +19,12 @@
     overflow: hidden;
 }
 
-.mod-version-autor{
+.mod-version-author{
     display: flex;
     justify-content: space-between;
 }
 
-.mod-version-autor text{
+.mod-version-author text{
     font-size: 12px;
     max-width: 45%;
 }
