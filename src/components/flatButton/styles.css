@@ -6,7 +6,13 @@
     height: 30px;
     border-radius: 10px;
     border: solid 2px;
-    margin-left: 10px;
-    margin-right: 10px;
     background-color: white;
+}
+
+.flat-button.border-right{
+    margin-right: 10px;
+}
+
+.flat-button.border-left{
+    margin-left: 10px;
 }

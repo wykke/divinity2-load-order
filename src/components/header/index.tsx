@@ -9,7 +9,8 @@ export default class Header extends Component{
         return (
             <header className="header">
                 <FileInput/>
-                <FlatButton icon="folder-open"/>
+                <FlatButton icon="folder-open" borderRight borderLeft/>
+                <FlatButton icon="save" borderRight/>
             </header>
         )
     }
