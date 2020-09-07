@@ -6,13 +6,14 @@ const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname
 
 function createWindow () {
   const win = new BrowserWindow({
-    width: 800,
+    width: 1200,
     height: 600,
     webPreferences: {
       nodeIntegration: true
     }
   })
 
+  win.setMenu(null)
   win.loadURL(startURL)
 
   win.webContents.openDevTools()

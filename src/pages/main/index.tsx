@@ -1,5 +1,12 @@
 import React from 'react'
 
+import './styles.css'
+import '../../globalStyles.css'
+
 export default function Main(){
-    return (<h1>Hello World!</h1>)
+    return (
+        <div className="main">
+            <h1>Hello World</h1>
+        </div>
+    )
 }
