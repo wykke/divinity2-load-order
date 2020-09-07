@@ -17,6 +17,10 @@ export default class ModList extends Component<modProps>{
                     <ModCard name="m1" version="1.1.1"/>
                     <ModCard name="m2" author="Alex"/>
                     <ModCard name="m3" version="2.2.2" author="wykke"/>
+                    <ModCard name="test"/>
+                    <ModCard name="test"/>
+                    <ModCard name="test"/>
+                    <ModCard name="test"/>
                 </ul>
             </div>
         )
