@@ -13,7 +13,7 @@
     padding: 5px;
 }
 
-.mod-card text{
+.mod-card label{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -24,7 +24,7 @@
     justify-content: space-between;
 }
 
-.mod-version-author text{
+.mod-version-author label{
     font-size: 12px;
     max-width: 45%;
 }

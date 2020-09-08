@@ -25,7 +25,5 @@ export default class xmlModListParser{
             const newMod: IMod = { id: (mod.children[0].getAttribute("value") || "") }
             this.modList.push(newMod)
         })
-
-        console.log(this.modList)
     }
 }

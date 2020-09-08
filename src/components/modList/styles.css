@@ -10,7 +10,7 @@
     overflow-y: scroll;
 }
 
-.mod-list > text{
+.mod-list > label{
     font-family: 'Roboto';
     font-size: 30px;
     color: white;

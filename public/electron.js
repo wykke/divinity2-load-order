@@ -11,6 +11,7 @@ function createWindow () {
     width: 1200,
     height: 600,
     webPreferences: {
+      worldSafeExecuteJavaScript: true,
       nodeIntegration: true
     }
   })

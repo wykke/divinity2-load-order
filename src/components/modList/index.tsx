@@ -12,7 +12,7 @@ export default class ModList extends Component<modProps>{
     render(){
         return (
             <div className={`mod-list ${this.props.inactiveMods?"inactive-mods":"active-mods"}`}>
-                <text>{this.props.inactiveMods?"Inactive Mods":"Active Mods"}</text>
+                <label>{this.props.inactiveMods?"Inactive Mods":"Active Mods"}</label>
                 <ul>
                     <ModCard name="m1" version="1.1.1"/>
                     <ModCard name="m2" author="Alex"/>
