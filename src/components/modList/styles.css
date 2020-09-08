@@ -6,11 +6,13 @@
     height: 80%;
 }
 
-.mod-list > ul{
+.mod-list ul{
+    height: 100%;
+    width: calc(100% + 3px);
     overflow-y: scroll;
 }
 
-.mod-list > text{
+.mod-list > label{
     font-family: 'Roboto';
     font-size: 30px;
     color: white;
