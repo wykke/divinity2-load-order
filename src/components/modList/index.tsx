@@ -21,7 +21,7 @@ export default class ModList extends Component<modProps>{
                     {provided => (
                         <ul ref={provided.innerRef} {...provided.droppableProps}>
                             {this.props.mods?.map((mod, index) => (
-                                <ModCard  key={index} name={mod.name} version={mod.version} author={mod.author}/>
+                                <ModCard  key={index} name={mod.name} version={mod.version} author={mod.author} index={index}/>
                             ))}
                         </ul>
                     )}

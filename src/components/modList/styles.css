@@ -7,6 +7,8 @@
 }
 
 .mod-list ul{
+    height: 100%;
+    width: calc(100% + 3px);
     overflow-y: scroll;
 }
 
