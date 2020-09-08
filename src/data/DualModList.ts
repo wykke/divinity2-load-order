@@ -1,7 +1,7 @@
 import xmlModListParse from './xmlModListParse'
 const { ipcRenderer } = window.require("electron");
 
-export interface IMod {
+export interface IModCard {
     name: string
     version?: string
     author?: string
@@ -9,7 +9,7 @@ export interface IMod {
 
 export interface IModList {
     listID: number
-    modList: IMod[]
+    modList: IModCard[]
 }
 
 export default class DualModList{

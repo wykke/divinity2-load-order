@@ -1,9 +1,9 @@
 import React from 'react'
-import { IMod } from '../../data/DualModList'
+import { IModCard } from '../../data/DualModList'
 
 import './styles.css'
 
-export default function ModCard(props: IMod){
+export default function ModCard(props: IModCard){
     return (
         <li className="mod-card">
             <text className="mod-title">{props.name}</text>
