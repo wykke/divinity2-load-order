@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
+import { Droppable } from 'react-beautiful-dnd'
 
 import ModCard from '../modCard'
+import { IModCard } from '../../data/DualModList'
 
 import './styles.css'
 
 type modProps = {
+    id: string
     inactiveMods?: boolean
+    mods?: IModCard[]
 }
 
 export default class ModList extends Component<modProps>{
@@ -13,15 +17,15 @@ export default class ModList extends Component<modProps>{
         return (
             <div className={`mod-list ${this.props.inactiveMods?"inactive-mods":"active-mods"}`}>
                 <label>{this.props.inactiveMods?"Inactive Mods":"Active Mods"}</label>
-                <ul>
-                    <ModCard name="m1" version="1.1.1"/>
-                    <ModCard name="m2" author="Alex"/>
-                    <ModCard name="m3" version="2.2.2" author="wykke"/>
-                    <ModCard name="test"/>
-                    <ModCard name="test"/>
-                    <ModCard name="test"/>
-                    <ModCard name="test"/>
-                </ul>
+                <Droppable droppableId={this.props.id}>
+                    {provided => (
+                        <ul ref={provided.innerRef} {...provided.droppableProps}>
+                            {this.props.mods?.map((mod, index) => (
+                                <ModCard  key={index} name={mod.name} version={mod.version} author={mod.author}/>
+                            ))}
+                        </ul>
+                    )}
+                </Droppable>
             </div>
         )
     }

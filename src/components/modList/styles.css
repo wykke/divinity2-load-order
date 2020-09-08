@@ -6,7 +6,7 @@
     height: 80%;
 }
 
-.mod-list > ul{
+.mod-list ul{
     overflow-y: scroll;
 }
 

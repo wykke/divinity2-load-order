@@ -1,17 +1,14 @@
-interface IMod{
-    id: string
-    name?: string
-    version?: string
-    author?: string
-}
+import { IModCard } from './DualModList'
 
 export default class xmlModListParser{
     private xmlText: string
-    private modList: IMod[]
+    public modList: IModCard[]
 
     constructor(xmlText: string){
         this.xmlText = xmlText
         this.modList = []
+
+        this.xmlModListParser()
     }
 
     xmlModListParser(){
@@ -22,7 +19,7 @@ export default class xmlModListParser{
             if(!mod.children[0].getAttribute("value"))
                 return
 
-            const newMod: IMod = { id: (mod.children[0].getAttribute("value") || "") }
+            const newMod: IModCard = { name: (mod.children[0].getAttribute("value") || "") }
             this.modList.push(newMod)
         })
     }
