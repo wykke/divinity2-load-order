@@ -1,6 +1,8 @@
-const {app, BrowserWindow } = require('electron')
+const {app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const isDev = require('electron-is-dev')
+
+const { getFileContent } = require('./nodeFunctions')
  
 const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
 
@@ -31,4 +33,8 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }
+})
+
+ipcMain.on('getFileContent', (event, arg) => {
+  event.returnValue = getFileContent(arg)
 })

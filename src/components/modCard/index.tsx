@@ -1,5 +1,5 @@
 import React from 'react'
-import { IMod } from '../../data/initialData'
+import { IMod } from '../../data/DualModList'
 
 import './styles.css'
 

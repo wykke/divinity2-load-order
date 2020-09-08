@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 
 import ModList from '../../components/modList'
-
+import DualModList from '../../data/DualModList'
 import './styles.css'
+
+const test = new DualModList()
+test.openModsFile()
 
 export default class MainBody extends Component{
     render(){
