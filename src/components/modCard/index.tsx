@@ -1,14 +1,9 @@
 import React from 'react'
+import { IMod } from '../../data/initialData'
 
 import './styles.css'
 
-type modProps = {
-    name: string
-    version?: string
-    author?: string
-}
-
-export default function ModCard(props: modProps){
+export default function ModCard(props: IMod){
     return (
         <li className="mod-card">
             <text className="mod-title">{props.name}</text>
