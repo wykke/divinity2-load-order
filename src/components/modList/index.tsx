@@ -14,6 +14,9 @@ type modProps = {
 }
 
 export default class ModList extends Component<modProps>{
+    shouldComponentUpdate(nextProps: modProps){
+        return !(nextProps.mods === this.props.mods) 
+    }
     render(){
         return (
             <div className={`mod-list ${this.props.inactiveMods?"inactive-mods":"active-mods"}`}>
