@@ -2,7 +2,7 @@ const {app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const isDev = require('electron-is-dev')
 
-const { getFileContent } = require('./nodeFunctions')
+const { getFileContent, openDirectory } = require('./nodeFunctions')
  
 const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
 
@@ -38,4 +38,8 @@ app.on('activate', () => {
 
 ipcMain.on('getFileContent', (event, arg) => {
   event.returnValue = getFileContent(arg)
+})
+
+ipcMain.on('openFileDialog', (event, arg) => {
+   openDirectory(arg).then(files => event.returnValue = files)
 })
