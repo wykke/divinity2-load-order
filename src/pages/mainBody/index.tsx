@@ -8,12 +8,12 @@ import './styles.css'
 const test = new DualModList("")
 const testInitialState = test.openModsFile()
 if(testInitialState)
-    test.addMultiplesModsToInactiveList(testInitialState)
+    test.addMultiplesModsToActiveList(testInitialState)
 
 export default class MainBody extends Component{
     state = {
         inactiveModList: test.inactiveModList,
-        
+        activeModList: test.activeModList
     }
 
     public ids = {activeModsList: "activeMods", inactiveModsList: "inactiveMods"}
@@ -22,7 +22,7 @@ export default class MainBody extends Component{
         return (
             <div className="main-body">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <ModList id={this.ids.activeModsList}/>
+                    <ModList id={this.ids.activeModsList} mods={this.state.activeModList.modList}/>
                     <ModList id={this.ids.inactiveModsList} inactiveMods mods={this.state.inactiveModList.modList}/>
                 </DragDropContext>
             </div>
