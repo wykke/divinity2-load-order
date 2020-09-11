@@ -4,17 +4,12 @@ export interface IModCard {
     author?: string
 }
 
-export interface IModList {
-    listID: number
-    modList: IModCard[]
-}
-
 export default class DualModList{
-    public activeModList: IModList = { listID: 1, modList: [] }
-    public inactiveModList: IModList = { listID: 2, modList: [] }
+    public activeModList: IModCard[] = []
+    public inactiveModList: IModCard[] = []
 
     addSingleModToActiveList(singleMod: IModCard){
-        this.activeModList.modList.push(singleMod)
+        this.activeModList.push(singleMod)
     }
 
     addMultiplesModsToActiveList(multiplesMods: IModCard[]){
@@ -24,7 +19,7 @@ export default class DualModList{
     }
 
     addSingleModToInactiveList(singleMod: IModCard){
-        this.inactiveModList.modList.push(singleMod)
+        this.inactiveModList.push(singleMod)
     }
 
     addMultiplesModsToInactiveList(multiplesMods: IModCard[]){
