@@ -19,7 +19,7 @@ export default function ModCard(props: IModWithIndex){
                     <label {...provided.dragHandleProps} className="mod-title">{props.name}</label>
                     <div {...provided.dragHandleProps} className="mod-version-author">
                     <label {...provided.dragHandleProps}>Version: {props.version?props.version:"1.0.0"}</label>
-                    <label{...provided.dragHandleProps}>{props.author?`By: ${props.author}`:""}</label>
+                    <label {...provided.dragHandleProps}>{props.author?`By: ${props.author}`:""}</label>
                     </div>
                 </li>
             )}
