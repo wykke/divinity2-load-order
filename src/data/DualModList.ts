@@ -27,8 +27,18 @@ export default class DualModList{
         
     }
 
-    addModToActiveList(){
+    addModToActiveList(mod: (IModList | IModList[])){
 
+    }
+
+    addSingleModToInactiveList(singleMod: IModCard){
+        this.inactiveModList.modList.push(singleMod)
+    }
+
+    addMultiplesModsToInactiveList(multiplesMods: IModCard[]){
+        multiplesMods.forEach(mod => {
+            this.addSingleModToInactiveList(mod)
+        })
     }
 
     openModsFile(){
