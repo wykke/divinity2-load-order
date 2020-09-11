@@ -48,29 +48,24 @@ export default class MainBody extends Component<MainBodyProps>{
             const currentList = source.droppableId === idType.activeMods ? this.props.activeModList : this.props.inactiveModList
             const item = currentList[source.index]
 
-            const newModList = Array.from(currentList)
-
-            newModList.splice(source.index, 1)
-            newModList.splice(destination.index, 0, item)
+            currentList.splice(source.index, 1)
+            currentList.splice(destination.index, 0, item)
 
             this.props.updateParentProps({
-                activeModList: source.droppableId === idType.activeMods ? newModList : otherList,
-                inactiveModList:  source.droppableId === idType.activeMods ? otherList : newModList
+                activeModList: source.droppableId === idType.activeMods ? currentList : otherList,
+                inactiveModList:  source.droppableId === idType.activeMods ? otherList : currentList
             })
         }else{
             const destinationList = source.droppableId === idType.activeMods ? this.props.inactiveModList : this.props.activeModList
             const currentList = source.droppableId === idType.activeMods ? this.props.activeModList : this.props.inactiveModList
             const item = currentList[source.index]
 
-            const newCurrentList = Array.from(currentList)
-            const newDestinationList = Array.from(destinationList)
-
-            newCurrentList.splice(source.index, 1)
-            newDestinationList.splice(destination.index, 0, item)
+            currentList.splice(source.index, 1)
+            destinationList.splice(destination.index, 0, item)
 
             this.props.updateParentProps({
-                activeModList: source.droppableId === idType.activeMods ? newCurrentList : newDestinationList,
-                inactiveModList:  source.droppableId === idType.activeMods ? newDestinationList : newCurrentList
+                activeModList: source.droppableId === idType.activeMods ? currentList : destinationList,
+                inactiveModList:  source.droppableId === idType.activeMods ? destinationList : currentList
             })
         }
     }
