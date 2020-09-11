@@ -1,4 +1,5 @@
 const fs = require('fs')
+const dialog = require('electron').dialog
 
 function getFileContent(fileDir){
     if(!fs.existsSync(fileDir)){
@@ -7,4 +8,10 @@ function getFileContent(fileDir){
     return fs.readFileSync(fileDir, 'utf-8')
 }
 
-module.exports = {getFileContent}
+function openDirectory(event, dirPath){
+    return dialog.showOpenDialog({
+        properties: ['openFile']
+      })
+}
+
+module.exports = {getFileContent, openDirectory}
