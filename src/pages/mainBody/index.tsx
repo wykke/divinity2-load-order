@@ -6,6 +6,9 @@ import DualModList from '../../data/DualModList'
 import XMLParser from '../../data/xmlParser'
 import './styles.css'
 
+export type listIds = ("0" | "1")
+export const idType = {activeMods: 0, inactiveMods: 1}
+
 const dualModList = new DualModList()
 const xmlParser = new XMLParser("")
 
@@ -13,30 +16,27 @@ const newList = xmlParser.xmlModListParser()
 if(newList)
     dualModList.addMultiplesModsToInactiveList(newList)
 
-//const initialState = []
-
-
 export default class MainBody extends Component{
     state = {
-        inactiveModList: dualModList.inactiveModList,
-        activeModList: dualModList.activeModList
+        modLists: [
+            dualModList.activeModList,
+            dualModList.inactiveModList
+        ]
     }
-
-    public ids = {activeModsList: "activeMods", inactiveModsList: "inactiveMods"}
 
     render(){
         return (
             <div className="main-body">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <ModList id={this.ids.activeModsList} mods={this.state.activeModList}/>
-                    <ModList id={this.ids.inactiveModsList} inactiveMods mods={this.state.inactiveModList}/>
+                    <ModList id={"0"} mods={this.state.modLists[idType.activeMods]}/>
+                    <ModList id={"1"} inactiveMods mods={this.state.modLists[idType.inactiveMods]}/>
                 </DragDropContext>
             </div>
         )
     }
 
-    onDragEnd(event: DropResult){
-        const {destination, source, draggableId} = event
+    onDragEnd = (event: DropResult) => {
+        const {destination, source} = event
 
         // if dropped outside of the list
         if(!destination)
@@ -44,15 +44,41 @@ export default class MainBody extends Component{
         // if dropped at same position at same list
         if(destination.droppableId === source.droppableId && destination.index === source.index)
             return
+
+        // convert string to number, necessary because RBDnD
+        const sourceDroppableID = source.droppableId === idType.activeMods.toString() ? idType.activeMods : idType.inactiveMods
+        const destinationDroppableID = destination.droppableId === idType.activeMods.toString() ? idType.activeMods : idType.inactiveMods
+
         // if dropped at same list
-        if(destination.droppableId === source.droppableId){
-            console.log(draggableId)
+        if(sourceDroppableID === destinationDroppableID){
+            const otherListIndex = sourceDroppableID ? idType.activeMods : idType.inactiveMods
+            const currentList = Array.from(this.state.modLists[sourceDroppableID])
+            const item = currentList[source.index]
+
+            currentList.splice(source.index, 1)
+            currentList.splice(destination.index, 0, item)
+
+            const newModList = []
+            newModList[sourceDroppableID] = currentList
+            newModList[otherListIndex] = this.state.modLists[otherListIndex]
+
+            this.setState({modLists: newModList})
+            
+        }else{
+            const currentList = Array.from(this.state.modLists[sourceDroppableID])
+            const newList = Array.from(this.state.modLists[destinationDroppableID])
+            const item = currentList[source.index]
+
+            currentList.splice(source.index, 1)
+            newList.splice(destination.index, 0, item)
+
+            const newModList = []
+            newModList[sourceDroppableID] = currentList
+            newModList[destinationDroppableID] = newList
+
+            this.setState({modLists: newModList})
+
         }
-
-
-        // destination?.droppableId
-        // source.droppableId
-        // draggableId
     }
     
 }

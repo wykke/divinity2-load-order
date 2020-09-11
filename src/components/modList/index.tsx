@@ -3,11 +3,12 @@ import { Droppable } from 'react-beautiful-dnd'
 
 import ModCard from '../modCard'
 import { IModCard } from '../../data/DualModList'
+import { listIds } from '../../pages/mainBody/index'
 
 import './styles.css'
 
 type modProps = {
-    id: string
+    id: listIds
     inactiveMods?: boolean
     mods?: IModCard[]
 }
@@ -21,8 +22,9 @@ export default class ModList extends Component<modProps>{
                     {provided => (
                         <ul ref={provided.innerRef} {...provided.droppableProps}>
                             {this.props.mods?.map((mod, index) => (
-                                <ModCard  key={index} name={mod.name} version={mod.version} author={mod.author} index={index}/>
+                                <ModCard  key={mod.name} name={mod.name} version={mod.version} author={mod.author} index={index}/>
                             ))}
+                            {provided.placeholder}
                         </ul>
                     )}
                 </Droppable>
