@@ -1,10 +1,15 @@
 import { IModCard } from './DualModList'
+const { ipcRenderer } = window.require("electron");
 
-export default class xmlModListParser{
+export default class XMLParser{
     private xmlText: string
+    public filePath: string
 
-    constructor(xmlText: string){
-        this.xmlText = xmlText
+    constructor(filePath: string){
+        this.filePath = filePath
+
+        // change to filePath later
+        this.xmlText = ipcRenderer.sendSync('getFileContent', "/mnt/HDD/Files/Repositorios/divinity2-load-order/src/data/test/modsettings.lsx")
         this.xmlModListParser()
     }
 

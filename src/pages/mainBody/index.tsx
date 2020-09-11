@@ -3,17 +3,20 @@ import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 
 import ModList from '../../components/modList'
 import DualModList from '../../data/DualModList'
+import XMLParser from '../../data/xmlParser'
 import './styles.css'
 
-const test = new DualModList("")
-const testInitialState = test.openModsFile()
-if(testInitialState)
-    test.addMultiplesModsToActiveList(testInitialState)
+const dualModList = new DualModList()
+const xmlParser = new XMLParser("")
+
+const newList = xmlParser.xmlModListParser()
+if(newList)
+    dualModList.addMultiplesModsToInactiveList(newList)
 
 export default class MainBody extends Component{
     state = {
-        inactiveModList: test.inactiveModList,
-        activeModList: test.activeModList
+        inactiveModList: dualModList.inactiveModList,
+        activeModList: dualModList.activeModList
     }
 
     public ids = {activeModsList: "activeMods", inactiveModsList: "inactiveMods"}

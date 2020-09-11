@@ -1,6 +1,3 @@
-import xmlModListParser from './xmlModListParser'
-const { ipcRenderer } = window.require("electron");
-
 export interface IModCard {
     name: string
     version?: string
@@ -15,17 +12,6 @@ export interface IModList {
 export default class DualModList{
     public activeModList: IModList = { listID: 1, modList: [] }
     public inactiveModList: IModList = { listID: 2, modList: [] }
-    private xmlParser?: xmlModListParser
-
-    constructor(fileDir: string){
-        // change for fileDir later
-        const xmlText = ipcRenderer.sendSync('getFileContent', "/mnt/HDD/Files/Repositorios/divinity2-load-order/src/data/test/modsettings.lsx")
-        if(xmlText){
-            this.xmlParser = new xmlModListParser(xmlText)
-        }
-
-        
-    }
 
     addSingleModToActiveList(singleMod: IModCard){
         this.activeModList.modList.push(singleMod)
@@ -45,10 +31,6 @@ export default class DualModList{
         multiplesMods.forEach(mod => {
             this.addSingleModToInactiveList(mod)
         })
-    }
-
-    openModsFile(){
-        return this.xmlParser?.xmlModListParser()
     }
 
 }
