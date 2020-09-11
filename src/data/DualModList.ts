@@ -32,7 +32,7 @@ export default class DualModList{
     }
 
     openModsFile(){
-        return this.xmlParser?.modList
+        return this.xmlParser?.xmlModListParser()
     }
 
 }
