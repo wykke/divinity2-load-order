@@ -6,7 +6,7 @@ import { IModCard } from '../../data/DualModList'
 import './styles.css'
 
 export type listIds = ("0" | "1")
-export const idType = {activeMods: 0, inactiveMods: 1}
+export const idType = {activeMods: "0", inactiveMods: "1"}
 
 type modLists = {
     activeMods: IModCard[]
@@ -33,49 +33,46 @@ export default class MainBody extends Component<MainBodyProps>{
     }
 
     onDragEnd = (event: DropResult) => {
-        // const {destination, source} = event
+        const {destination, source} = event
 
-        // // if dropped outside of the list
-        // if(!destination)
-        //     return
-        // // if dropped at same position at same list
-        // if(destination.droppableId === source.droppableId && destination.index === source.index)
-        //     return
+        // if dropped outside of the list
+        if(!destination)
+            return
+        // if dropped at same position at same list
+        if(destination.droppableId === source.droppableId && destination.index === source.index)
+            return
 
-        // // convert string to number, necessary because RBDnD
-        // const sourceDroppableID = source.droppableId === idType.activeMods.toString() ? idType.activeMods : idType.inactiveMods
-        // const destinationDroppableID = destination.droppableId === idType.activeMods.toString() ? idType.activeMods : idType.inactiveMods
+        // if dropped at same list
+        if(source.droppableId === destination.droppableId){
+            const otherList = source.droppableId === idType.activeMods ? this.props.inactiveModList : this.props.activeModList
+            const currentList = source.droppableId === idType.activeMods ? this.props.activeModList : this.props.inactiveModList
+            const item = currentList[source.index]
 
-        // // if dropped at same list
-        // if(sourceDroppableID === destinationDroppableID){
-        //     const otherListIndex = sourceDroppableID ? idType.activeMods : idType.inactiveMods
-        //     const currentList = Array.from(this.state.modLists[sourceDroppableID])
-        //     const item = currentList[source.index]
+            const newModList = Array.from(currentList)
 
-        //     currentList.splice(source.index, 1)
-        //     currentList.splice(destination.index, 0, item)
+            newModList.splice(source.index, 1)
+            newModList.splice(destination.index, 0, item)
 
-        //     const newModList = []
-        //     newModList[sourceDroppableID] = currentList
-        //     newModList[otherListIndex] = this.state.modLists[otherListIndex]
+            this.props.updateParentProps({
+                activeModList: source.droppableId === idType.activeMods ? newModList : otherList,
+                inactiveModList:  source.droppableId === idType.activeMods ? otherList : newModList
+            })
+        }else{
+            const destinationList = source.droppableId === idType.activeMods ? this.props.inactiveModList : this.props.activeModList
+            const currentList = source.droppableId === idType.activeMods ? this.props.activeModList : this.props.inactiveModList
+            const item = currentList[source.index]
 
-        //     this.setState({modLists: newModList})
-            
-        // }else{
-        //     const currentList = Array.from(this.state.modLists[sourceDroppableID])
-        //     const newList = Array.from(this.state.modLists[destinationDroppableID])
-        //     const item = currentList[source.index]
+            const newCurrentList = Array.from(currentList)
+            const newDestinationList = Array.from(destinationList)
 
-        //     currentList.splice(source.index, 1)
-        //     newList.splice(destination.index, 0, item)
+            newCurrentList.splice(source.index, 1)
+            newDestinationList.splice(destination.index, 0, item)
 
-        //     const newModList = []
-        //     newModList[sourceDroppableID] = currentList
-        //     newModList[destinationDroppableID] = newList
-
-        //     this.setState({modLists: newModList})
-
-        // }
+            this.props.updateParentProps({
+                activeModList: source.droppableId === idType.activeMods ? newCurrentList : newDestinationList,
+                inactiveModList:  source.droppableId === idType.activeMods ? newDestinationList : newCurrentList
+            })
+        }
     }
     
 }
